@@ -11,7 +11,7 @@ def load_user(user_id):
 def create_uuid():
     return str(uuid4())
 
-team_members = db.table('team_members',
+team_user = db.Table('team_members',
     db.Column('team_id', db.String, db.ForeignKey('team.id'), nullable=False),
     db.Column('user_id', db.String, db.ForeignKey('user.id'), nullable=False)
 )    
@@ -23,13 +23,13 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    bio =  db.Column(db.Text)
+    bio =  db.Column(db.Text, nullable=True)
     github = db.Column(db.String(120), unique=False, nullable=True)
     linkedin = db.Column(db.String(120), unique=False, nullable=True)
     personal_site = db.Column(db.String(120), unique=False, nullable=True)
     # team_invitations
     # socail_network = db.column(db.Text)
-    skills = db.column(db.Text)
+    skills =  db.Column(db.Text, nullable=True)
     
 
     def __repr__(self):
@@ -44,8 +44,8 @@ class Team(db.Model):
     github = db.Column(db.String(120), unique=False, nullable=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     leader_id = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)
-    team_members = db.relationship('user', secondary=team_members, lazy=True,
-        backref='team_members')
+    team_members = db.relationship('User', secondary=team_user, lazy=True,
+        backref=db.backref('team_members', lazy='dynamic'))
 
     def __repr__(self):
         return f"Team('{self.id}, {self.name}', '{self.about}', '{self.image_file}')"
