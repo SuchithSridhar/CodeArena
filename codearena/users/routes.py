@@ -48,7 +48,8 @@ def logout():
 @users.route("/account")
 @login_required
 def account():
-    return render_template('account.jinja', title='Account')
+    return render_template('account.jinja', title='Account',
+            skills=current_user.skills.split(',') if current_user.skills else [])
 
 @users.route("/account/edit", methods=['get', 'post'])
 @login_required
@@ -68,6 +69,8 @@ def edit_account():
             current_user.linkedin = form.linkedin.data
         if form.skills.data:
             current_user.skills = form.skills.data
+        if form.bio.data:
+            current_user.bio = form.bio.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
@@ -75,7 +78,17 @@ def edit_account():
         form.username.data = current_user.username
         form.email.data = current_user.email
         form.github.data = current_user.github
+        form.bio.data = current_user.bio
         form.linkedin.data = current_user.linkedin
         form.personal.data = current_user.personal_site
     return render_template('edit-account.jinja', title='Edit Account',
             form=form, skills=current_user.skills.split(',') if current_user.skills else [])
+
+
+@users.route("/dashboard")
+@login_required
+def dashboard():
+    # team = Team(name="Brahm Team", about="Brahms team", leader_id=current_user.id )
+    # db.session.add(team)
+    # db.session.commit()
+    return render_template('dashboard.jinja', title="Dashboard", teams=Team.query.all())

@@ -5,3 +5,15 @@
   width: 100%;
   border-radius: 50%;
 }
+
+.notification {
+  position: absolute;
+  top: 4em;
+  margin: 0 1.5%;
+  width: 97%;
+}
+
+.notification .close {
+  float: right;
+  font-weight: 800;
+}

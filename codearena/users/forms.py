@@ -42,6 +42,7 @@ class UpdateAccountForm(FlaskForm):
     github = StringField('Github', validators=[])
     linkedin = StringField('Linkedin', validators=[])
     personal = StringField('Personal Domain', validators=[])
+    bio = TextAreaField('Bio - Markdown')
 
     def validate_username(self, username):
         if username.data != current_user.username:

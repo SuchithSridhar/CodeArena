@@ -1,11 +1,13 @@
 const tagContainer = document.querySelector(".tag-container");
 const input = document.querySelector(".tag-container input");
 
-let tags = document
-  .querySelector("#initial-tags")
-  .innerText.trim()
-  .slice(0, -1)
-  .split(",");
+let element = document.querySelector("#initial-tags");
+let tags = [];
+
+if (element) {
+  tags = element.innerText.trim().slice(0, -1).split(",");
+}
+
 var btn = document.querySelector("#update-btn");
 
 function createTag(label) {
@@ -14,7 +16,8 @@ function createTag(label) {
   const span = document.createElement("span");
   span.innerHTML = label;
   const closeIcon = document.createElement("i");
-  closeIcon.innerHTML = "x";
+  closeIcon.innerHTML = " x";
+  closeIcon.style.marginLeft = "5px";
   closeIcon.setAttribute("class", "material-icons");
   closeIcon.setAttribute("data-item", label);
   div.appendChild(span);

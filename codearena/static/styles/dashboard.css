@@ -1,0 +1,47 @@
+.container {
+  margin-top: 5em;
+}
+
+.profile-info {
+  padding: 2em;
+  border: red 1px solid;
+}
+.my-teams {
+  padding: 2em;
+  border: red 1px solid;
+}
+@media (min-width: 992px) {
+  .my-teams {
+    margin-left: 2em;
+  }
+}
+.image-container {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.image-container img {
+  width: 200px;
+}
+
+.team-cont {
+  border: solid red 1px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.team-cont img {
+  display: inline block;
+  margin: 1em 1em;
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}
+
+.team-cont h3 {
+  font-size: 2.5em;
+}
+.team-uuid {
+  float: right;
+}

@@ -11,7 +11,7 @@ def load_user(user_id):
 def create_uuid():
     return str(uuid4())
 
-team_user = db.Table('team_members',
+team_user = db.Table('teams',
     db.Column('team_id', db.String, db.ForeignKey('team.id'), nullable=False),
     db.Column('user_id', db.String, db.ForeignKey('user.id'), nullable=False)
 )    
@@ -44,8 +44,8 @@ class Team(db.Model):
     github = db.Column(db.String(120), unique=False, nullable=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     leader_id = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)
-    team_members = db.relationship('User', secondary=team_user, lazy=True,
-        backref=db.backref('team_members', lazy='dynamic'))
+    teams = db.relationship('User', secondary=team_user, lazy=True,
+        backref=db.backref('teams', lazy='dynamic'))
 
     def __repr__(self):
         return f"Team('{self.id}, {self.name}', '{self.about}', '{self.image_file}')"

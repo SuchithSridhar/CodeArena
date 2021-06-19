@@ -29,21 +29,34 @@
         </section>
         <section class='user-content'>
         <div class="tag-container">
-            {% for skill in current_user.skills.split(',') %}
+        {% if skills %}
+            {% for skill in skills %}
                 <div class="tag">
                 <span>{{skill}}</span>
                 </div>
             {% endfor %}
+        {% endif %}
         </div>
         <div class="links">
+        {% if current_user.github %}
         <a href="{{current_user.github}}">{{current_user.github}}</a>
+        {% endif %}
         <br>
+        {% if current_user.linkedin %}
         <a href="{{current_user.linkedin}}">{{current_user.linkedin}}</a>
+        {% endif %}
         <br>
+        {% if current_user.personal_site %}
         <a href="{{current_user.personal_site}}">{{current_user.personal_site}}</a>
+        {% endif %}
         <br>
         </div>
             <a class='btn btn-lg btn-outline-info' href="{{url_for('users.edit_account')}}">Edit Profile</a>
+        </section>
+        <section class="bio">
+            {% if current_user.bio %}
+                {{current_user.bio}}
+            {% endif %}
         </section>
     </div>
 {% endblock content %}

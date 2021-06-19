@@ -42,3 +42,7 @@
 #initial-tags {
   display: none;
 }
+
+.form-bio {
+  height: 15em;
+}

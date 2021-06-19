@@ -1,0 +1,45 @@
+{% extends "layout.jinja" %}
+
+{% block headers %}
+    <link rel="stylesheet" href="{{url_for('static', filename="styles/dashboard.css")}}">
+{% endblock headers %}
+
+{% block content %}
+    <div class=container>
+        <div class="row">
+            <div class="col-lg-4 profile-info">
+                <div class="image-container">
+                <img
+                  src="{{ url_for('static', filename="profile-pictures/" + current_user.image_file) }}"
+                  alt="User Image">
+                </div>
+                <h2>{{current_user.username}}</h2>
+                <h6 class='text-muted'>{{current_user.email}}</h6>
+
+                <div class="tags-container">
+                    <!-- Tags do here -->
+                    tags here
+                </div>
+            </div>
+            <div class="col-lg-7 my-teams">
+                {% for team in teams %}
+                    <div class="team-cont">
+                    <div class="row">
+                        <div class="col-3">
+                            <img
+                              src="{{ url_for('static', filename="team-pictures/" + team.image_file) }}"
+                              alt="Team Image">
+                        </div>
+                        <div class="col-9 d-flex align-items-center">
+                            <h3 class="">{{team.name}}</h3>
+                        </div>
+                    </div>
+                    <span class='about'>{{team.about}}</span>
+                    <span class='team-uuid'>{{team.id[-6:]}}</span>
+                    </div>
+                {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>  
+{% endblock content %}

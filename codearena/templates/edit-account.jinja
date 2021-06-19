@@ -52,12 +52,11 @@
                 <div class="form-group">
                         {{ form.skills.label(class="form-control-label") }}
                         <div class='tag-container'>
+                        {% if skills %}
                         <div id="initial-tags">
                         {% for skill in skills %}{{skill}},{% endfor %}
                         </div>
-                        {% for skill in skills %}
-                            <div class="tag"><span>{{skill}}</span><i class="material-icons" data-item="test ">x</i></div>
-                        {% endfor %}
+                        {% endif %}
                     {% if form.skills.errors %}
                         {{ form.skills(class="form-control form-control-large is-invalid") }}
                     <div class="invalid-feedback">
@@ -111,6 +110,19 @@
                         </div>
                     {% else %}
                         {{ form.personal(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.bio.label(class="form-control-label") }}
+                    {% if form.bio.errors %}
+                        {{ form.bio(class="form-bio form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.bio.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.bio(class="form-bio form-control form-control-lg") }}
                     {% endif %}
                 </div>
             </fieldset>
