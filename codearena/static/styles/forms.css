@@ -1,0 +1,33 @@
+.background {
+  background-color: gray;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.internal-container {
+  background-color: white;
+  padding: 5em 3em;
+}
+
+.form-control-label {
+  margin-top: 1em;
+}
+
+.form-check {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.btn {
+  margin-right: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.btn-register {
+  margin-top: 2em;
+}
+
+form {
+  padding-bottom: 1em;
+}

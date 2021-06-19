@@ -1,5 +1,10 @@
-{% extends "layout.html" %} {% block content %}
-<div class="container content-section">
+{% extends "layout.jinja" %}
+{% block headers %}
+    <link rel="stylesheet" href="{{url_for('static', filename="styles/forms.css")}}">
+{% endblock headers %}
+{% block content %}
+<div class="background">
+<div class="internal-container container">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
@@ -48,5 +53,6 @@
         <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up Now</a>
       </small>
     </div>
+ </div>   
 </div>
 {% endblock content %}

@@ -1,0 +1,16 @@
+.background {
+  background-color: gray;
+  padding: 15% 10%;
+}
+
+.login-btn {
+  margin-left: 5%;
+  padding: 2% 5%;
+}
+.register-btn {
+  padding: 2% 5%;
+}
+
+.main-btns {
+  margin-top: 5%;
+}

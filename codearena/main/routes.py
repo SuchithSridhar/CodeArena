@@ -4,6 +4,9 @@ from codearena.models import User
 main = Blueprint('main', __name__)
 
 @main.route("/")
-@main.route("/home")
 def home():
-    return render_template('layout.html', title="CodeArena")
+    return render_template('index.jinja', title="CodeArena")
+
+@main.route("/about")
+def about():
+    return render_template('about.jinja', title="About")

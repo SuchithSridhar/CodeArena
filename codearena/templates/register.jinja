@@ -1,5 +1,10 @@
-{% extends "layout.html" %} {% block content %}
-<div class="container content-section">
+{% extends "layout.jinja" %}
+{% block headers %}
+    <link rel="stylesheet" href="{{url_for('static', filename="styles/forms.css")}}">
+{% endblock headers %}
+{% block content %}
+<div class="background">
+<div class="internal-container container">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
@@ -59,7 +64,7 @@
       </div>
     </fieldset>
     <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
+      {{ form.submit(class="btn btn-outline-info btn-register") }}
     </div>
   </form>
     <div class="border-top pt-3">
@@ -68,5 +73,6 @@
         <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
       </small>
     </div>
+</div>
 </div>
 {% endblock content %}
