@@ -1,0 +1,19 @@
+.top-header img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.top-header .username {
+  font-weight: 500;
+  font-size: 3em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.container {
+  margin-top: 2em;
+}
+
+.user-content {
+  margin-top: 2em;
+}
