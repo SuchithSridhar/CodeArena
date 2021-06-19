@@ -15,3 +15,13 @@ class NewTeamForm(FlaskForm):
     image_file = FileField('Team Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Create Team')
 
+class EditTeamForm(FlaskForm):
+    name = StringField('Team Name')
+    github = StringField('Github Link')
+    bio = TextAreaField('Bio')
+    discord = StringField('Discord Link')
+    about = StringField('Team Descriptijn')
+    tags = StringField("Tags")
+    image_file = FileField('Team Picture', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Create Team')
+
