@@ -2,6 +2,7 @@
 
 {% block headers %}
     <link rel="stylesheet" href="{{url_for('static', filename='styles/forms.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/edit-account.css')}}">
 {% endblock headers %}
 
 {% block content %}
@@ -38,7 +39,8 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.picture.label(class="form-control-label") }}
+                {{ form.picture.label(class="form-control-label") }} <br>
+                <div class="boxoutline">
                     {{ form.picture(class="form-control-file") }}
                     {% if form.picture.errors %}
                         {% for error in form.picture.errors %}
@@ -46,10 +48,77 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+                </div>
+                <div class="form-group">
+                        {{ form.skills.label(class="form-control-label") }}
+                        <div class='tag-container'>
+                        <div id="initial-tags">
+                        {% for skill in skills %}{{skill}},{% endfor %}
+                        </div>
+                        {% for skill in skills %}
+                            <div class="tag"><span>{{skill}}</span><i class="material-icons" data-item="test ">x</i></div>
+                        {% endfor %}
+                    {% if form.skills.errors %}
+                        {{ form.skills(class="form-control form-control-large is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.skills.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.skills(class="form-control form-control-large") }}
+                    {% endif %}
+                        </div>
+                      {# <br /> #}
+                      {# <div class="tag-container"> #}
+                      {#   <input  /> #}  
+                      {# </div> #}
+                </div>
+                <div class="form-group">
+                    {{ form.github.label(class="form-control-label") }}
+                    {% if form.github.errors %}
+                        {{ form.github(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.github.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.github(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.linkedin.label(class="form-control-label") }}
+                    {% if form.linkedin.errors %}
+                        {{ form.linkedin(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.linkedin.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.linkedin(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.personal.label(class="form-control-label") }}
+                    {% if form.personal.errors %}
+                        {{ form.personal(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.personal.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.personal(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
             </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info btn-update") }}
-            </div>
+            {# <div class="form-group"> #}
+            {#     {{ form.submit(class="btn btn-outline-info btn-update") }} #}
+            {# </div> #}
+            <button id='update-btn' class="btn btn-outline-info btn-update">Update</button>
         </form>
     </div>
+    <script src="{{url_for('static', filename='js/tags.js')}}"></script>
 {% endblock content %}

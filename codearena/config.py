@@ -1,4 +1,5 @@
 
+
 class Config:
     # SECRET_KEY = os.environ.get('SECRET_KEY')
     SECRET_KEY = "jalkdsfjalskdfjalkwsdjflkaj"
@@ -8,3 +9,13 @@ class Config:
     # MAIL_USE_TLS = True
     # MAIL_USERNAME = os.environ.get('EMAIL_USER')
     # MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+
+tags = [
+        'python',
+        'java',
+        'html',
+        'css',
+        'bootstrap4',
+        'bootstrap5',
+        'flask'
+        ]

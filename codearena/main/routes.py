@@ -6,8 +6,6 @@ main = Blueprint('main', __name__)
 
 @main.route("/")
 def home():
-    if not os.path.isfile("./site.db"):
-        db.create_all()
     return render_template('index.jinja', title="CodeArena")
 
 @main.route("/about")

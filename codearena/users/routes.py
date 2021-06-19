@@ -1,7 +1,8 @@
+import os
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from codearena import db, bcrypt
-from codearena.models import User
+from codearena.models import User, Team
 from codearena.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm)
 from codearena.users.utils import save_picture
 
@@ -9,6 +10,8 @@ users = Blueprint('users', __name__)
 
 @users.route("/register", methods=['get', 'post'])
 def register():
+    if not os.path.isfile("./site.db"):
+        db.create_all()
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = RegistrationForm()
@@ -57,10 +60,22 @@ def edit_account():
             current_user.image_file = picture_file
         current_user.username = form.username.data
         current_user.email = form.email.data
+        if form.github.data:
+            current_user.github = form.github.data
+        if form.personal.data:
+            current_user.personal_site = form.personal.data
+        if form.linkedin.data:
+            current_user.linkedin = form.linkedin.data
+        if form.skills.data:
+            current_user.skills = form.skills.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-    return render_template('edit-account.jinja', title='Edit Account', form=form)
+        form.github.data = current_user.github
+        form.linkedin.data = current_user.linkedin
+        form.personal.data = current_user.personal_site
+    return render_template('edit-account.jinja', title='Edit Account',
+            form=form, skills=current_user.skills.split(',') if current_user.skills else [])

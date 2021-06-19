@@ -1,24 +1,5 @@
-.top-header img {
-  width: 150px;
-  border-radius: 50%;
-}
-
-.top-header .username {
-  font-weight: 500;
-  font-size: 3em;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.container {
-  margin-top: 2em;
-}
-
-.user-content {
-  margin-top: 2em;
-}
-
 .tag-container {
+  border: 1px solid #ced4da;
   border-radius: 0.3rem;
   background: #fff;
   display: flex;
@@ -40,7 +21,24 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
   cursor: default;
 }
-.tag i {
+.tag span {
   color: #666;
   margin-left: 5px;
+}
+.tag-container input {
+  padding: 0.3rem;
+  border: 0;
+  outline: none;
+  color: #333;
+  flex: 1;
+}
+
+.boxoutline {
+  padding: 0.3rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.3rem;
+}
+
+#initial-tags {
+  display: none;
 }
