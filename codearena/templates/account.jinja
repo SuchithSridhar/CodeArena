@@ -28,6 +28,21 @@
             </div>
         </section>
         <section class='user-content'>
+        <div class="tag-container">
+            {% for skill in current_user.skills.split(',') %}
+                <div class="tag">
+                <span>{{skill}}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="links">
+        <a href="{{current_user.github}}">{{current_user.github}}</a>
+        <br>
+        <a href="{{current_user.linkedin}}">{{current_user.linkedin}}</a>
+        <br>
+        <a href="{{current_user.personal_site}}">{{current_user.personal_site}}</a>
+        <br>
+        </div>
             <a class='btn btn-lg btn-outline-info' href="{{url_for('users.edit_account')}}">Edit Profile</a>
         </section>
     </div>
