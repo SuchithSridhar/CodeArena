@@ -45,3 +45,21 @@
 .team-uuid {
   float: right;
 }
+
+.new-team {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  font-size: 3em;
+  border: limegreen 2px solid;
+  color: black;
+  background-color: white;
+  box-shadow: 5px 5px 5px #aaa;
+}
+
+.new-team:hover {
+  background-color: limegreen;
+}
