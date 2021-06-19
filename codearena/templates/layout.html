@@ -53,28 +53,27 @@
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
-              src="{{ url_for('static', filename="circleSuchi.png") }}"
+              src="{{ url_for('static', filename="profile-pictures/" + current_user.image_file) }}"
               alt="Profile Image"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="{{url_for('users.logout')}}">Logout</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">{{ current_user.username }}</a></li>
             </ul>
           </div>
           {% else %}
         <ul class="navbar-nav d-flex me-1 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Register</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('users.register')}}">Register</a>
           </li>
         </ul>
         <ul class="navbar-nav d-flex mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Login</a> </li>
+            <a class="nav-link active" aria-current="page" href="{{url_for('users.login')}}">Login</a> </li>
         </ul>
           {% endif %}
       </div>
