@@ -40,6 +40,10 @@
             <div class="row teams-row">
                 <div class="my-teams">
                     <h2>My Teams:</h2>
+                {% if not teams %}
+                    <p>You have not joined any teams yet!</p>                    
+                    <a href="{{url_for('teams.search_team')}}">Look for teams Here</a>
+                {% endif %}
                 {% for team in teams %}
                     <div class="team-cont">
                     <div class="row">

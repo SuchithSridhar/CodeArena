@@ -1,11 +1,29 @@
+:root {
+  --gray: rgb(33, 37, 41);
+  --green: rgb(24, 48, 35);
+  --white: white;
+}
+html {
+  height: 100%;
+}
 body {
+  min-height: 100%;
   font-family: "Source Code Pro", monospace;
 }
 
-.tagline {
-  font-weight: 600;
-  font-size: 4em;
+.gray-background {
+  background-color: var(--gray);
 }
+.navbar {
+  height: 100px;
+  font-size: 1.2em;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
 .user-image {
   width: 100px;
 }

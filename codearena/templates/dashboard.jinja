@@ -2,6 +2,7 @@
 
 {% block headers %}
     <link rel="stylesheet" href="{{url_for('static', filename="styles/dashboard.css")}}">
+    <link rel="stylesheet" href="{{url_for('static', filename="styles/tag.css")}}">
 {% endblock headers %}
 
 {% block content %}
@@ -17,13 +18,21 @@
                 <h2>{{current_user.username}}</h2>
                 <h6 class='text-muted'>{{current_user.email}}</h6>
 
-                <div class="tags-container">
-                    <!-- Tags do here -->
-                    tags here
-                </div>
+                            <div class="tag-container">
+                            {% if current_user.skills %}
+                                {% for skill in current_user.skills.split(',') %}
+                                    <div class="tag"><span>{{skill}}</span></div>        
+                                {% endfor %}
+                            {% endif %}
+                            </div>
             </div>
             </div>
             <div class="col-lg-7 my-teams">
+                <h2>Teams</h2>
+                {% if not teams %}
+                    <p>You have not joined any teams yet!</p>                    
+                    <a href="{{url_for('teams.search_team')}}">Look for teams Here</a>
+                {% endif %}
                 {% for team in teams %}
                     <a class="nostyle" href="{{url_for('teams.view_team', uuid=team.id)}}">
                     <div class="team-cont">
@@ -37,9 +46,13 @@
                             <span class='team-uuid'>{{team.id[-7:]}}</span>
                             <h3 class="">{{team.name}}</h3>
                             <span class='about'>{{team.about}}</span>
-                            <div class="tags-container">
-                                tags here
-                            </div>
+                    <div class="tag-container gray-background">
+                        {% if team.tags %}
+                            {% for tag in team.tags.split(',') %}
+                                <div class="tag"><span>{{tag}}</span></div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                         </div>
                     </div>
                     </div>

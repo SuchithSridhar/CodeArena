@@ -1,5 +1,6 @@
 .team-cont {
-  border: solid red 1px;
+  border: solid var(--white) 1px;
+  border-radius: 5px;
   padding: 0.5em;
   margin-top: 1em;
 }

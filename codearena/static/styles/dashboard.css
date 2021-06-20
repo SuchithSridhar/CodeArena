@@ -8,17 +8,19 @@
 
 .profile-info {
   padding: 2em;
-  border: red 1px solid;
+  border: var(--white) 1px solid;
+  border-radius: 5px;
+  color: var(--white);
 }
 
 body {
   height: 5000px;
+  background-color: var(--gray);
 }
 
 .my-teams {
-  padding: 2em;
-  border: red 1px solid;
   height: 100%;
+  color: var(--white);
 }
 @media (min-width: 992px) {
   .my-teams {
@@ -36,8 +38,9 @@ body {
 }
 
 .team-cont {
-  border: solid red 1px;
-  padding: 0.5em;
+  border: var(--white) 1px solid;
+  border-radius: 5px;
+  padding: 0.8em;
   margin-bottom: 1em;
 }
 
@@ -70,7 +73,6 @@ body {
   border: limegreen 2px solid;
   color: black;
   background-color: white;
-  box-shadow: 5px 5px 5px #aaa;
 }
 
 .new-team:hover {

@@ -1,6 +1,5 @@
 .tag-container {
   border-radius: 0.3rem;
-  background: #fff;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -33,5 +32,6 @@
 }
 
 .tag-search {
+  background-color: #fff;
   border: 1px solid #ccc;
 }

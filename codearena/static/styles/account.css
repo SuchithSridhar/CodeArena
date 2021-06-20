@@ -1,9 +1,10 @@
 body {
-  background-color: #aaa;
+  background-color: var(--gray);
+  color: var(--white);
 }
 .profile-details {
-  background-color: white;
-  /* border: 1px solid red; */
+  border: 1px solid var(--white);
+  border-radius: 5px;
   margin-top: 1em;
   padding: 1em;
 }
@@ -30,7 +31,8 @@ body {
 }
 
 .bio {
-  background-color: white;
+  border: 1px solid var(--white);
+  border-radius: 5px;
   margin-top: 1em;
   height: 400px;
 }
@@ -46,7 +48,8 @@ body {
   font-size: 2em;
 }
 .team-cont {
-  background-color: white;
+  border: 1px solid var(--white);
+  border-radius: 5px;
   padding: 0.5em;
   margin-bottom: 1em;
 }

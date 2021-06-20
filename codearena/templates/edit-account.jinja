@@ -1,15 +1,16 @@
 {% extends "layout.jinja" %}
 
 {% block headers %}
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/forms.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/account-form.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/edit-account.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/tag.css')}}">
 {% endblock headers %}
 
 {% block content %}
+    <div class="background">
     <div class="container">
-        <form method="POST" action="" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
+    <div class="internal-container">
+        <form method="POST" action="" enctype="multipart/form-data"> {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Account Info</legend>
                 <div class="form-group">
@@ -132,6 +133,7 @@
             {# </div> #}
             <button id='update-btn' class="btn btn-outline-info btn-update">Update</button>
         </form>
-    </div>
+</div>
+    </div></div>
     <script src="{{url_for('static', filename='js/tags.js')}}"></script>
 {% endblock content %}

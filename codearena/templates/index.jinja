@@ -3,11 +3,17 @@
     <link rel="stylesheet" href="{{url_for('static', filename="styles/index.css")}}">
 {% endblock headers %}
 {% block content %}
+
+    <!-- The video -->
+    <video autoplay muted loop id="cmatrix">
+    <source src="{{url_for('static', filename='video/cmatrix.mp4')}}" type="video/mp4">
+    </video>
+
     <div class="background">
         <div class="row">
             <div class="col-lg-6">
             <h2 class="tagline">FOR CODERS BY CODERS</h2>
-            <p>A platform to meet, collaborate and create with like
+            <p class=brief>A platform to meet, collaborate and create with like
             minded people!</p>
             </div>
             <div class="col-lg-6 main-btns d-flex align-items-center justify-content-center">

@@ -1,3 +1,8 @@
+body {
+  background-color: var(--gray);
+  color: var(--white);
+}
+
 input {
   width: 100%;
 }
