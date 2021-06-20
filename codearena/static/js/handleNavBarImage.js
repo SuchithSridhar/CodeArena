@@ -1,8 +1,6 @@
 function onResize() {
   var w = document.documentElement.clientWidth;
   var h = document.documentElement.clientHeight;
-  document.getElementById("result").innerHTML =
-    "Width: " + w + ", " + "Height: " + h;
 
   var mobile = document.querySelectorAll(".mobile-content");
   var desktop = document.querySelectorAll(".desktop-content");
@@ -26,3 +24,10 @@ function onResize() {
 
 window.addEventListener("resize", onResize);
 onResize();
+
+var notifications = document.querySelectorAll(".notification");
+for (var i = 0; i < notifications.length; i++) {
+  notifications[i].onclick = (e) => {
+    e.target.style.display = "none";
+  };
+}

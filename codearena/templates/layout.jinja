@@ -16,6 +16,9 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
     {% block headers %}
     {% endblock headers %}
@@ -39,11 +42,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('main.home') }}">Home</a>
-          </li>
-          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('main.about') }}">About</a>
           </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Search
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item"
+              href="{{url_for('users.search_user')}}">Users</a></li>
+              <li><a class="dropdown-item"
+              href="{{url_for('teams.search_team')}}">Teams</a></li>
+              </ul>
+            </li>
           {% if current_user.is_authenticated %}
               <li class="nav-item mobile-content">
               <a class="nav-link active" aria-current="page" href="{{ url_for('users.logout') }}">Logout</a>
@@ -69,9 +80,10 @@
                   aria-expanded="false"
                 >
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{url_for('users.logout')}}">Logout</a></li>
-                  <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="{{url_for('users.account')}}">{{ current_user.username }}</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('users.edit_account')}}">Edit Account</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="{{url_for('users.logout')}}">Logout</a></li>
                 </ul>
               </div>
           </div>
@@ -93,8 +105,9 @@
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
               {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
+                  <div class="notification alert alert-{{category}}">
                   {{ message }}
+                  <span class='close'>X</span>
                 </div>
               {% endfor %}
             {% endif %}

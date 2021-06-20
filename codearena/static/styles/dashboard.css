@@ -1,0 +1,80 @@
+.container {
+  margin-top: 5em;
+}
+
+.inner-container {
+  height: 700px;
+}
+
+.profile-info {
+  padding: 2em;
+  border: var(--white) 1px solid;
+  border-radius: 5px;
+  color: var(--white);
+}
+
+body {
+  height: 5000px;
+  background-color: var(--gray);
+}
+
+.my-teams {
+  height: 100%;
+  color: var(--white);
+}
+@media (min-width: 992px) {
+  .my-teams {
+    margin-left: 2em;
+  }
+}
+.image-container {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.image-container img {
+  width: 200px;
+}
+
+.team-cont {
+  border: var(--white) 1px solid;
+  border-radius: 5px;
+  padding: 0.8em;
+  margin-bottom: 1em;
+}
+
+.team-cont img {
+  display: inline block;
+  margin: 1em 1em;
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}
+
+.team-cont h3 {
+  font-size: 2em;
+}
+.team-uuid {
+  display: block;
+  margin-left: auto;
+  text-align: right;
+  font-size: 0.8em;
+}
+
+.new-team {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  font-size: 3em;
+  border: limegreen 2px solid;
+  color: black;
+  background-color: white;
+}
+
+.new-team:hover {
+  background-color: limegreen;
+}

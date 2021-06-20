@@ -1,7 +1,54 @@
+:root {
+  --gray: rgb(33, 37, 41);
+  --green: rgb(24, 48, 35);
+  --white: white;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  font-family: "Source Code Pro", monospace;
+}
+
+.gray-background {
+  background-color: var(--gray);
+}
+.navbar {
+  font-size: 1.2em;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
 .user-image {
   width: 100px;
 }
 .user-image img {
   width: 100%;
   border-radius: 50%;
+}
+
+.notification {
+  position: absolute;
+  top: 4em;
+  margin: 0 1.5%;
+  width: 97%;
+}
+
+.notification .close {
+  float: right;
+  font-weight: 800;
+}
+
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
 }

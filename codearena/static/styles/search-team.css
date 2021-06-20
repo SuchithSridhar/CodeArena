@@ -1,0 +1,25 @@
+body {
+  background-color: var(--gray);
+  color: var(--white);
+}
+
+input {
+  width: 100%;
+}
+
+.tag-div {
+  padding: 2em 0;
+}
+
+.input {
+  padding: 2em 0;
+}
+
+span {
+  text-align: right;
+}
+
+.remove-padding {
+  padding-left: 0;
+  padding-right: 0;
+}

@@ -25,9 +25,11 @@ def create_app(config_class=Config):
 
     from codearena.users.routes import users
     from codearena.main.routes import main
+    from codearena.teams.routes import teams
     # from flaskblog.posts.routes import posts
     # from flaskblog.errors.handlers import errors
     app.register_blueprint(users)
+    app.register_blueprint(teams)
     # app.register_blueprint(posts)
     app.register_blueprint(main)
     # app.register_blueprint(errors)

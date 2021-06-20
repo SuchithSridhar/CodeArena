@@ -39,13 +39,8 @@
             </div>
             <div class="row teams-row">
                 <div class="my-teams">
-                    <h2>My Teams:</h2>
-                {% if not teams %}
-                    <p>You have not joined any teams yet!</p>                    
-                    <a href="{{url_for('teams.search_team')}}">Look for teams Here</a>
-                {% endif %}
+                    <h2>Teams:</h2>
                 {% for team in teams %}
-                    <a class="nostyle" href={{url_for("teams.view_team", uuid=team.id)}}>
                     <div class="team-cont">
                     <div class="row">
                         <div class="col-3">
@@ -67,7 +62,6 @@
                         </div>
                     </div>
                     </div>
-                    </a>
                 {% endfor %}
                 </div>
             </div>

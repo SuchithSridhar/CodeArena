@@ -1,16 +1,45 @@
 .background {
-  background-color: gray;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 5000px;
   padding: 15% 10%;
+  color: white;
+  overflow: hidden; /* Hide scrollbars */
 }
 
 .login-btn {
+  background-color: white;
   margin-left: 5%;
-  padding: 2% 5%;
+  font-size: 1.5em;
+  padding: 1em 2em;
+  color: rgb(24, 48, 35);
 }
 .register-btn {
-  padding: 2% 5%;
+  font-size: 1.5em;
+  padding: 1em 2em;
 }
 
 .main-btns {
   margin-top: 5%;
+}
+
+#cmatrix {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.tagline {
+  font-weight: 600;
+  font-size: 6em;
+  word-spacing: 0;
+}
+
+.brief {
+  font-size: 1.5em;
+  font-weight: 400;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.5);
 }

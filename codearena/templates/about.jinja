@@ -1,13 +1,22 @@
 {% extends "layout.jinja" %}
 {% block headers %}
-    <link rel="stylesheet" href="{{url_for('static', filename="styles/about.css")}}">
+    <link rel="stylesheet" href="{{url_for('static', filename="styles/index.css")}}">
 {% endblock headers %}
 {% block content %}
+
+    <!-- The video -->
+    <video autoplay muted loop id="cmatrix">
+    <source src="{{url_for('static', filename='video/cmatrix.mp4')}}" type="video/mp4">
+    </video>
+
     <div class="background">
         <div class="row">
             <div class="col-lg-6">
-            <h2>Consectetur amet repudiandae exercitationem facilis distinctio consequuntur, accusamus Ex dolor corrupti</h2>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            <h2 class="tagline">FOR CODERS BY CODERS</h2>
+            <p class=brief>A platform to meet, collaborate and create with like
+            minded people!</p>
+            </div>
+            <div class="col-lg-6 main-btns d-flex align-items-center justify-content-center">
             </div>
         </div>
     </div>
