@@ -45,9 +45,12 @@ class Team(db.Model):
     date_crated = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     github = db.Column(db.String(120), unique=False, nullable=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    leader_id = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)
+    leader = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)
     tags = db.Column(db.Text, nullable=True)
     discord = db.Column(db.String(120), unique=False, nullable=True)
+    bio =  db.Column(db.Text, nullable=True)
+    members = db.relationship('User', secondary=team_user, lazy=True,
+        backref=db.backref('members', lazy='dynamic'))
 
     def __repr__(self):
         return f"Team('{self.id}, {self.name}', '{self.about}', '{self.image_file}')"

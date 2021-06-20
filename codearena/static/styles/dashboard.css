@@ -2,18 +2,19 @@
   margin-top: 5em;
 }
 
+.inner-container {
+  height: 700px;
+}
+
 .profile-info {
   padding: 2em;
   border: red 1px solid;
 }
 
 body {
-  height: 120%;
+  height: 5000px;
 }
 
-.row {
-  height: 80%;
-}
 .my-teams {
   padding: 2em;
   border: red 1px solid;

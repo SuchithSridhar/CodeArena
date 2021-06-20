@@ -1,0 +1,81 @@
+{% extends "layout.jinja" %}
+
+{% block headers %}
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/team-page.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/tag.css')}}">
+{% endblock headers %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="left-panel">
+                <div class="image-container">
+                    <img class="team-image"
+                    src="{{ url_for('static', filename="team-pictures/" + team.image_file) }}"
+                    alt="Team Image" >
+                </div>
+                <div class="button-container">
+                {% if team.members %}
+                   {% if current_user in team.members %}
+                      <span class="joined-btn btn btn-large btn-outline-primary disabled">Joined!</span>
+                    {% else%}
+                        <a class="joined-btn btn btn-lg btn-outline-primary" href="{{url_for('teams.join_team', uuid=team.id)}}">Join</a>
+                   {% endif %} 
+                {% endif %}
+                {% if team.members %}
+                   {% if current_user.id == team.leader %}
+                       <a href="{{url_for('teams.edit_team', uuid=team.id)}}" class="joined-btn btn btn-large btn-outline-primary mt-2">Edit</a>
+                   {% endif %} 
+                {% endif %}
+                </div>
+                <div class="details">
+                    <h5>Date Created:</h5>
+                    <span>{{team.date_crated.strftime("%Y %B, %d")}}</span>
+                    <h5>UUID:</h5>
+                    <span>{{team.id[-6:]}}</span>
+                    <h5>Leader:</h5>
+                    <span>{{get_user(team.leader).username}}</span>
+                    <div class="tag-container">
+                        {% if team.tags %}
+                            {% for tag in team.tags.split(',') %}
+                                <div class="tag"><span>{{tag}}</span></div>        
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="right-panel">
+                    <h2>{{team.name}}</h2>
+                    <h5>Brief:</h3>
+                    <p>{{team.about}}</p>
+                    <h5>Members: </h3>
+                    <div class="user-container">
+                    {% for mem in team.members %}
+                        <div class="row">
+                            <div class="col-2 img-container">
+                            <img src="{{url_for('static', filename="profile-pictures/"+mem.image_file)}}" alt="User Image">
+                            </div>
+                            <div class="col-10">
+                            <span class="user-uuid">{{mem.id[-6:]}}</span>
+                            <h3 class="">{{mem.username}}</h3>
+                            <span class="email text-muted">{{mem.email}}</span>
+                            <div class="tag-container">
+                            {% if mem.skills %}
+                                {% for skill in mem.skills.split(',') %}
+                                    <div class="tag"><span>{{skill}}</span></div>        
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

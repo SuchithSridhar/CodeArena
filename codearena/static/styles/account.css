@@ -1,46 +1,70 @@
-.top-header img {
-  width: 150px;
+body {
+  background-color: #aaa;
+}
+.profile-details {
+  background-color: white;
+  /* border: 1px solid red; */
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+}
+
+.image-container {
+  text-align: center;
+}
+
+.info h3 {
+  margin-top: 1em;
+  margin-left: 0.2em;
+}
+
+.info span,
+.info a {
+  padding: 0.5em;
+  display: block;
+}
+
+.bio {
+  background-color: white;
+  margin-top: 1em;
+  height: 400px;
+}
+
+.my-teams {
+  padding: 0;
+  margin-top: 1em;
+  height: 100%;
+}
+
+.my-teams h2 {
+  margin-left: 0.5em;
+  font-size: 2em;
+}
+.team-cont {
+  background-color: white;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.team-cont img {
+  display: inline block;
+  margin: 1em 1em;
+  width: 6em;
+  height: 6em;
   border-radius: 50%;
 }
 
-.top-header .username {
-  font-weight: 500;
-  font-size: 3em;
-  margin-top: auto;
-  margin-bottom: auto;
+.team-cont h3 {
+  font-size: 2em;
 }
-
-.container {
-  margin-top: 2em;
-}
-
-.user-content {
-  margin-top: 2em;
-}
-
-.tag-container {
-  border-radius: 0.3rem;
-  background: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding: 0.3rem;
-  /* overflow-x: scroll; */
-}
-.tag-container .tag {
-  height: 30px;
-  margin: 5px;
-  padding: 5px 6px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background: #eee;
-  display: flex;
-  align-items: center;
-  color: #333;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
-  cursor: default;
-}
-.tag i {
-  color: #666;
-  margin-left: 5px;
+.team-uuid {
+  display: block;
+  margin-left: auto;
+  text-align: right;
+  font-size: 0.8em;
 }

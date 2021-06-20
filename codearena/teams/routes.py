@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from codearena import db, bcrypt
 from codearena.models import User, Team
 from codearena.teams.forms import NewTeamForm, EditTeamForm, SearchTeamForm
-from codearena.teams.utils import save_picture
+from codearena.teams.utils import save_picture, search_teams
 
 teams = Blueprint('teams', __name__)
 
@@ -12,7 +12,7 @@ teams = Blueprint('teams', __name__)
 def new_team():
     form = NewTeamForm()
     if form.validate_on_submit():
-        team = Team(name=form.name.data, about=form.about.data, leader_id=current_user.id)
+        team = Team(name=form.name.data, about=form.about.data, leader=current_user.id)
 
         if form.image_file.data:
             picture_file = save_picture(form.image_file.data)
@@ -27,11 +27,41 @@ def new_team():
         if form.tags.data:
             team.tags = form.tags.data
 
+        if form.bio.data:
+            team.bio = form.bio.data
+
+        team.members.append(current_user)
         db.session.add(team)
         db.session.commit()
         flash("Team Successfully created!", category="success")
         return redirect(url_for('users.dashboard'))
     return render_template('new-team.jinja', title='New Team', form=form)
+
+@teams.route("/team/<uuid>")
+@login_required
+def view_team(uuid):
+    team = Team.query.get(uuid)
+    if not team:
+        abort(404, description="Team not found.")
+
+    def get_user_from_id(uuid):
+        return User.query.get(uuid)
+
+    return render_template('team-page.jinja', title=team.name, team=team, get_user=get_user_from_id)
+
+
+
+@teams.route("/team/join/<uuid>")
+@login_required
+def join_team(uuid):
+    team = Team.query.get(uuid)
+    if not team:
+        abort(404, description="Team not found.")
+
+    team.members.append(current_user)
+    db.session.commit()
+
+    return redirect(url_for('teams.view_team', uuid=uuid))
 
 
 @teams.route("/team/edit/<uuid>", methods=['get', 'post'])
@@ -41,7 +71,7 @@ def edit_team(uuid):
     if not team:
         abort(404, description="Team not found.")
 
-    if team.leader_id != current_user.id:
+    if team.leader != current_user.id:
         abort(403, description="Permission Denied.")
 
     form = EditTeamForm()
@@ -50,7 +80,6 @@ def edit_team(uuid):
         form.about.data = team.about
         form.github.data = team.github
         form.discord.data = team.discord
-        form.tags.data = team.tags
         form.bio.data = team.bio
 
     if form.validate_on_submit():
@@ -80,8 +109,9 @@ def search_team():
 def search_api_team():
     search = request.form.get("text")
     tags = request.form.get("tags")
-    print(search, tags)
+    tags = tags.split(',') if tags.strip()!= "" else []
     teams = Team.query.all()
+    teams = search_teams(teams, tags, search)
     result = []
     for team in teams:
         dic = {}
@@ -89,6 +119,8 @@ def search_api_team():
         dic['uuid'] = team.id
         dic['image'] = team.image_file
         dic['about'] = team.about
+        dic['tags'] = team.tags
+
         result.append(dic)
     return jsonify(result)
 

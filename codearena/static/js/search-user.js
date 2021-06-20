@@ -68,23 +68,24 @@ function doSearch() {
   $("#results").empty();
   $.ajax({
     method: "post",
-    url: "/search/team/api",
+    url: "/search/user/api",
     data: { text: $("#input").val(), tags: getTags() },
     success: function (res) {
       var data = "";
       $.each(res, function (index, value) {
-        t = value.tags.split(",");
+        let t = [];
+        if (value.tags) t = value.tags.split(",");
         let tags_string = "";
         for (let i = 0; i < t.length; i++) {
           tags_string += `<div class="tag"><span>${t[i]}</span></div>\n`;
         }
         data += `<div class="team-cont">
-                    <a class="nostyle" href="/team/${value.uuid}">
+                    <a class="nostyle" href="/user/${value.uuid}">
                     <div class="row">
                         <div class="col-2 img-container">
                             <img
-                              src="/static/team-pictures/${value.image}"
-                              alt="Team Image">
+                              src="/static/profile-pictures/${value.image}"
+                              alt="User Image">
                         </div>
                         <div class="col-10 ">
                         <span class='team-uuid'>${value.uuid.slice(
@@ -92,14 +93,15 @@ function doSearch() {
                           value.uuid.length
                         )}</span>
                             <h3 class="">${value.name}</h3>
-                            <span class='about'>${value.about}</span>
+                            <span class='email text-muted'>${value.email}</span>
                             <div class="tag-container">
                                ${tags_string} 
                             </div>
                         </div>
                     </div>
                     </a>
-                    </div>`;
+                    </div>
+              `;
       });
       $("#results").html(data);
     },

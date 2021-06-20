@@ -6,8 +6,9 @@
 
 {% block content %}
     <div class=container>
-        <div class="row">
-            <div class="col-lg-4 profile-info">
+        <div class="row inner-container">
+            <div class="col-lg-4">
+            <div class=" profile-info">
                 <div class="image-container">
                 <img
                   src="{{ url_for('static', filename="profile-pictures/" + current_user.image_file) }}"
@@ -21,8 +22,10 @@
                     tags here
                 </div>
             </div>
+            </div>
             <div class="col-lg-7 my-teams">
                 {% for team in teams %}
+                    <a class="nostyle" href="{{url_for('teams.view_team', uuid=team.id)}}">
                     <div class="team-cont">
                     <div class="row">
                         <div class="col-3">
@@ -40,14 +43,17 @@
                         </div>
                     </div>
                     </div>
+                    </a>
                 {% endfor %}
                     </div>
             </div>
         </div>
     </div>  
-    <button onclick="window.location.href='#'" class="new-team" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-delay="0" title="Create new team!">
+    <a href="{{url_for('teams.new_team')}} ">
+    <button class="new-team" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-delay="0" title="Create new team!">
         +
     </button>
+    </a>
     <script>
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

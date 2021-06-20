@@ -1,3 +1,11 @@
+body {
+  font-family: "Source Code Pro", monospace;
+}
+
+.tagline {
+  font-weight: 600;
+  font-size: 4em;
+}
 .user-image {
   width: 100px;
 }
@@ -16,4 +24,14 @@
 .notification .close {
   float: right;
   font-weight: 800;
+}
+
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
 }

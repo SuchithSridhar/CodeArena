@@ -2,8 +2,8 @@
 
 {% block headers %}
     <link rel="stylesheet" href="{{url_for('static', filename='styles/forms.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/edit-account.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/tag.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/new-team.css')}}">
 {% endblock headers %}
 
 {% block content %}
@@ -11,68 +11,64 @@
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Account Info</legend>
+                <legend class="border-bottom mb-4">New Team</legend>
                 <div class="form-group">
-                    {{ form.username.label(class="form-control-label") }}
+                    {{ form.name.label(class="form-control-label") }}
 
-                    {% if form.username.errors %}
-                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
+                            {% for error in form.name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.username(class="form-control form-control-lg") }}
+                        {{ form.name(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
-                    {% if form.email.errors %}
-                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    {{ form.about.label(class="form-control-label") }}
+                    {% if form.about.errors %}
+                        {{ form.about(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.email.errors %}
+                            {% for error in form.about.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
+                        {{ form.about(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
-                {{ form.picture.label(class="form-control-label") }} <br>
+                {{ form.image_file.label(class="form-control-label") }} <br>
                 <div class="boxoutline">
-                    {{ form.picture(class="form-control-file") }}
-                    {% if form.picture.errors %}
-                        {% for error in form.picture.errors %}
+                    {{ form.image_file(class="form-control-file") }}
+                    {% if form.image_file.errors %}
+                        {% for error in form.image_file.errors %}
                             <span class="text-danger">{{ error }}</span></br>
                         {% endfor %}
                     {% endif %}
                 </div>
                 </div>
                 <div class="form-group">
-                        {{ form.skills.label(class="form-control-label") }}
+                        {{ form.tags.label(class="form-control-label") }}
                         <div class='tag-container tag-search'>
-                        {% if skills %}
+                        {% if tags %}
                         <div id="initial-tags">
-                        {% for skill in skills %}{{skill}},{% endfor %}
+                        {% for tag in tags %}{{tag}},{% endfor %}
                         </div>
                         {% endif %}
-                    {% if form.skills.errors %}
-                        {{ form.skills(class="form-control form-control-large is-invalid") }}
+                    {% if form.tags.errors %}
+                        {{ form.tags(class="form-control form-control-large is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.skills.errors %}
+                        {% for error in form.tags.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                        {{ form.skills(class="form-control form-control-large") }}
+                        {{ form.tags(class="form-control form-control-large") }}
                     {% endif %}
                         </div>
-                      {# <br /> #}
-                      {# <div class="tag-container"> #}
-                      {#   <input  /> #}  
-                      {# </div> #}
                 </div>
                 <div class="form-group">
                     {{ form.github.label(class="form-control-label") }}
@@ -88,29 +84,16 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.linkedin.label(class="form-control-label") }}
-                    {% if form.linkedin.errors %}
-                        {{ form.linkedin(class="form-control form-control-lg is-invalid") }}
+                    {{ form.discord.label(class="form-control-label") }}
+                    {% if form.discord.errors %}
+                        {{ form.discord(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.linkedin.errors %}
+                            {% for error in form.discord.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.linkedin(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.personal.label(class="form-control-label") }}
-                    {% if form.personal.errors %}
-                        {{ form.personal(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.personal.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.personal(class="form-control form-control-lg") }}
+                        {{ form.discord(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
@@ -130,7 +113,7 @@
             {# <div class="form-group"> #}
             {#     {{ form.submit(class="btn btn-outline-info btn-update") }} #}
             {# </div> #}
-            <button id='update-btn' class="btn btn-outline-info btn-update">Update</button>
+            <button id='update-btn' class="btn btn-outline-info btn-update">Create Team</button>
         </form>
     </div>
     <script src="{{url_for('static', filename='js/tags.js')}}"></script>

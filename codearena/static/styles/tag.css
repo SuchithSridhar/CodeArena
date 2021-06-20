@@ -1,5 +1,4 @@
 .tag-container {
-  border: 1px solid #ced4da;
   border-radius: 0.3rem;
   background: #fff;
   display: flex;
@@ -31,4 +30,8 @@
   outline: none;
   color: #333;
   flex: 1;
+}
+
+.tag-search {
+  border: 1px solid #ccc;
 }
