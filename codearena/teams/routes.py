@@ -1,8 +1,8 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint, abort
+from flask import render_template, url_for, flash, redirect, request, Blueprint, abort, jsonify
 from flask_login import login_user, current_user, logout_user, login_required
 from codearena import db, bcrypt
 from codearena.models import User, Team
-from codearena.teams.forms import NewTeamForm, EditTeamForm
+from codearena.teams.forms import NewTeamForm, EditTeamForm, SearchTeamForm
 from codearena.teams.utils import save_picture
 
 teams = Blueprint('teams', __name__)
@@ -69,3 +69,26 @@ def edit_team(uuid):
         return redirect(url_for('users.dashboard'))
     return render_template('edit-team.jinja', title='New Team',
             form=form, tags=team.tags.split(',') if team.tags else [])
+
+@teams.route("/search/team", methods=['get', 'post'])
+@login_required
+def search_team():
+    return render_template('search-team.jinja', title='Search Team')
+
+@teams.route('/search/team/api', methods=['post'])
+@login_required
+def search_api_team():
+    search = request.form.get("text")
+    tags = request.form.get("tags")
+    print(search, tags)
+    teams = Team.query.all()
+    result = []
+    for team in teams:
+        dic = {}
+        dic['name'] = team.name
+        dic['uuid'] = team.id
+        dic['image'] = team.image_file
+        dic['about'] = team.about
+        result.append(dic)
+    return jsonify(result)
+

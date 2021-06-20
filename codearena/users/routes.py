@@ -88,7 +88,7 @@ def edit_account():
 @users.route("/dashboard")
 @login_required
 def dashboard():
-    # team = Team(name="Brahm Team", about="Brahms team", leader_id=current_user.id )
+    # team = Team(name="We Code", about="A group of programmers who love to code just doing there work.", leader_id=current_user.id )
     # db.session.add(team)
     # db.session.commit()
     return render_template('dashboard.jinja', title="Dashboard", teams=Team.query.all())

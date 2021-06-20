@@ -1,0 +1,28 @@
+.team-cont:first-of-type {
+  margin-top: 3em;
+}
+.team-cont {
+  border: solid red 1px;
+  padding: 0.5em;
+  margin-top: 1em;
+}
+
+.img-container {
+  text-align: right;
+}
+
+.team-cont img {
+  display: inline block;
+  margin: 1em 0;
+  width: 9em;
+  height: 9em;
+  border-radius: 50%;
+}
+
+.team-cont h3 {
+  font-size: 2em;
+}
+.team-uuid {
+  margin-left: auto;
+  display: block;
+}

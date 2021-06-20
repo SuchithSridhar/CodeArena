@@ -25,3 +25,8 @@ class EditTeamForm(FlaskForm):
     image_file = FileField('Team Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Create Team')
 
+
+class SearchTeamForm(FlaskForm):
+    name = StringField('Search')
+    tags = StringField("Tags")
+    submit = SubmitField('Search')

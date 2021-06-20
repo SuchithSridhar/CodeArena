@@ -11,7 +11,7 @@ def load_user(user_id):
 def create_uuid():
     return str(uuid4())
 
-team_user = db.Table('teams',
+team_user = db.Table('team_members',
     db.Column('team_id', db.String, db.ForeignKey('team.id'), nullable=False),
     db.Column('user_id', db.String, db.ForeignKey('user.id'), nullable=False)
 )    
@@ -31,7 +31,7 @@ class User(db.Model, UserMixin):
     # socail_network = db.column(db.Text)
     skills =  db.Column(db.Text, nullable=True)
     teams = db.relationship('Team', secondary=team_user, lazy=True,
-        backref=db.backref('teams', lazy='dynamic'))
+        backref=db.backref('team_members', lazy='dynamic'))
     
 
     def __repr__(self):
@@ -48,6 +48,7 @@ class Team(db.Model):
     leader_id = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)
     tags = db.Column(db.Text, nullable=True)
     discord = db.Column(db.String(120), unique=False, nullable=True)
+    
 
     def __repr__(self):
         return f"Team('{self.id}, {self.name}', '{self.about}', '{self.image_file}')"

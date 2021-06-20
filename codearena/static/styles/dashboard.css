@@ -6,9 +6,18 @@
   padding: 2em;
   border: red 1px solid;
 }
+
+body {
+  height: 120%;
+}
+
+.row {
+  height: 80%;
+}
 .my-teams {
   padding: 2em;
   border: red 1px solid;
+  height: 100%;
 }
 @media (min-width: 992px) {
   .my-teams {
@@ -40,14 +49,17 @@
 }
 
 .team-cont h3 {
-  font-size: 2.5em;
+  font-size: 2em;
 }
 .team-uuid {
-  float: right;
+  display: block;
+  margin-left: auto;
+  text-align: right;
+  font-size: 0.8em;
 }
 
 .new-team {
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   right: 40px;
   width: 1.7em;
