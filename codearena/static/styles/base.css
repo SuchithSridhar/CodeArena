@@ -15,7 +15,6 @@ body {
   background-color: var(--gray);
 }
 .navbar {
-  height: 100px;
   font-size: 1.2em;
 }
 
