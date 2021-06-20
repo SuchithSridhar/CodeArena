@@ -54,6 +54,8 @@
                     <h5>Members: </h3>
                     <div class="users">
                     {% for mem in team.members %}
+                        <a class="nostyle"
+                        href="{{url_for('users.view_user', uuid=mem.id)}}">
                         <div class="row user-container">
                             <div class="col-2 img-container">
                             <img src="{{url_for('static', filename="profile-pictures/"+mem.image_file)}}" alt="User Image">
@@ -71,6 +73,7 @@
                             </div>
                             </div>
                         </div>
+                        </a>
                     {% endfor %}
                     </div>
                 </div>

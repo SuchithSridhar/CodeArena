@@ -45,6 +45,7 @@
                     <a href="{{url_for('teams.search_team')}}">Look for teams Here</a>
                 {% endif %}
                 {% for team in teams %}
+                    <a class="nostyle" href={{url_for("teams.view_team", uuid=team.id)}}>
                     <div class="team-cont">
                     <div class="row">
                         <div class="col-3">
@@ -66,6 +67,7 @@
                         </div>
                     </div>
                     </div>
+                    </a>
                 {% endfor %}
                 </div>
             </div>
